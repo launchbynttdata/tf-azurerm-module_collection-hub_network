@@ -1,10 +1,9 @@
-module github.com/nexient-llc/tf-azurerm-module_collection-hub_network
+module github.com/launchbynttdata/tf-azurerm-module_collection-hub_network
 
 go 1.21
 
 require (
-	github.com/gruntwork-io/terratest v0.46.13
-	github.com/nexient-llc/lcaf-component-terratest-common v1.0.3
+	github.com/launchbynttdata/lcaf-component-terratest v1.0.3
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -38,6 +37,7 @@ require (
 	github.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect
 	github.com/googleapis/gax-go/v2 v2.7.1 // indirect
 	github.com/gruntwork-io/go-commons v0.8.0 // indirect
+	github.com/gruntwork-io/terratest v0.46.13 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-getter v1.7.1 // indirect
