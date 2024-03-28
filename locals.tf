@@ -11,7 +11,6 @@
 // limitations under the License.
 locals {
   resource_group_name                        = module.resource_names["resource_group"].standard
-  firewall_name                              = module.resource_names["firewall"].standard
   public_ip_custom_name                      = module.resource_names["public_ip"].standard
   virtual_network_name                       = module.resource_names["hub_vnet"].standard
   ip_configuration_name                      = module.resource_names["hub_vnet_ip_configuration"].standard
@@ -29,7 +28,7 @@ locals {
   }
 
   firewall_map = {
-    "hub_firewall" = merge(var.firewall, {
+    "hub_firewall" = merge({
       client_name                     = var.logical_product_family
       stack                           = var.logical_product_service
       resource_group_name             = local.resource_group_name
@@ -42,8 +41,9 @@ locals {
       virtual_network_name            = local.virtual_network_name
       firewall_policy_id              = module.firewall_policy.id
       public_ip_custom_name           = local.public_ip_custom_name
-      custom_diagnostic_settings_name = local.custom_diagnostic_settings_name
-    })
+      custom_diagnostic_settings_name = local.custom_diagnostic_settings_name,
+      logs_destinations_ids           = []
+    }, var.firewall)
 
   }
 

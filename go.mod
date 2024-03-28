@@ -3,7 +3,7 @@ module github.com/launchbynttdata/tf-azurerm-module_collection-hub_network
 go 1.21
 
 require (
-	github.com/launchbynttdata/lcaf-component-terratest v1.0.3
+	github.com/launchbynttdata/lcaf-component-terratest v1.0.4
 	github.com/stretchr/testify v1.9.0
 )
 
