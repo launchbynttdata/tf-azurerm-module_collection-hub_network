@@ -22,6 +22,7 @@ module "hub_vnet" {
   location                = var.location
 
   network                                        = var.network
+  create_firewall                                = var.create_firewall
   firewall                                       = var.firewall
   firewall_policy_rule_collection_group_priority = var.firewall_policy_rule_collection_group_priority
   application_rule_collection                    = var.application_rule_collection

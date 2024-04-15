@@ -52,6 +52,7 @@ network = {
   subnet_names    = []
   subnet_prefixes = []
 }
+create_firewall = false
 firewall = {
   logs_destinations_ids = []
   subnet_cidr           = "10.0.1.0/24"

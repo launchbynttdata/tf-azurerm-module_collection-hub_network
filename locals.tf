@@ -27,7 +27,7 @@ locals {
     })
   }
 
-  firewall_map = {
+  firewall_map = var.create_firewall ? {
     "hub_firewall" = merge({
       client_name                     = var.logical_product_family
       stack                           = var.logical_product_service
@@ -45,11 +45,11 @@ locals {
       logs_destinations_ids           = []
     }, var.firewall)
 
-  }
+  } : null
 
-  firewall_public_ip_addresses = module.firewall.public_ip_addresses["hub_firewall"]
+  firewall_public_ip_addresses = var.create_firewall ? module.firewall.public_ip_addresses["hub_firewall"] : null
 
-  nat_rule_collection = var.nat_rule_collection != null ? [
+  nat_rule_collection = var.nat_rule_collection != null && var.create_firewall ? [
     for collection in var.nat_rule_collection : {
       name     = collection.name
       action   = collection.action

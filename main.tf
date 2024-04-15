@@ -44,6 +44,7 @@ module "network" {
 
 module "firewall" {
   source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall.git?ref=1.0.0"
+  count  = var.create_firewall ? 1 : 0
 
   firewall_map = local.firewall_map
 
@@ -52,6 +53,7 @@ module "firewall" {
 
 module "firewall_policy" {
   source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall_policy.git?ref=1.0.0"
+  count  = var.create_firewall ? 1 : 0
 
   name                = local.firewall_policy_name
   resource_group_name = local.resource_group_name
@@ -62,9 +64,10 @@ module "firewall_policy" {
 
 module "firewall_policy_rule_collection_group" {
   source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall_policy_rule_collection_group.git?ref=1.0.0"
+  count  = var.create_firewall ? 1 : 0
 
   name                        = local.firewall_policy_rule_collection_group_name
-  firewall_policy_id          = module.firewall_policy.id
+  firewall_policy_id          = var.create_firewall ? module.firewall_policy.id : null
   priority                    = var.firewall_policy_rule_collection_group_priority
   application_rule_collection = var.application_rule_collection
   network_rule_collection     = var.network_rule_collection

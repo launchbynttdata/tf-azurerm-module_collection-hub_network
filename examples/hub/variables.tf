@@ -121,6 +121,11 @@ variable "location" {
   type        = string
 }
 
+variable "create_firewall" {
+  description = "Boolean to create a firewall"
+  type        = bool
+  default     = false
+}
 
 variable "firewall" {
   description = "Attributes to create a azure firewall"
