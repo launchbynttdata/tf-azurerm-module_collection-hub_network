@@ -10,9 +10,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 locals {
-  resource_group_name   = module.resource_names["resource_group"].standard
-  public_ip_custom_name = module.resource_names["public_ip"].standard
-  virtual_network_name  = module.resource_names["hub_vnet"].standard
+  resource_group_name = module.resource_names["resource_group"].standard
+  //public_ip_custom_name = module.resource_names["public_ip"].standard
+  virtual_network_name = module.resource_names["hub_vnet"].standard
   #ip_configuration_name = module.resource_names["hub_vnet_ip_configuration"].standard
   # firewall_policy_name                       = module.resource_names["firewall_policy"].standard
   # firewall_policy_rule_collection_group_name = module.resource_names["fw_plcy_rule_colln_grp"].standard
