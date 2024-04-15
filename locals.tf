@@ -13,10 +13,10 @@ locals {
   resource_group_name   = module.resource_names["resource_group"].standard
   public_ip_custom_name = module.resource_names["public_ip"].standard
   virtual_network_name  = module.resource_names["hub_vnet"].standard
-  ip_configuration_name = module.resource_names["hub_vnet_ip_configuration"].standard
+  #ip_configuration_name = module.resource_names["hub_vnet_ip_configuration"].standard
   # firewall_policy_name                       = module.resource_names["firewall_policy"].standard
   # firewall_policy_rule_collection_group_name = module.resource_names["fw_plcy_rule_colln_grp"].standard
-  custom_diagnostic_settings_name = module.resource_names["custom_diagnostic_settings"].standard
+  #custom_diagnostic_settings_name = module.resource_names["custom_diagnostic_settings"].standard
 
 
   network_map = {
