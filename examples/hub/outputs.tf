@@ -50,57 +50,57 @@ output "vnet_subnet_name_id_map" {
   description = "Outputs a subnet name to ID map for each Vnet"
 }
 
-output "firewall_ids" {
-  value       = module.hub_vnet.firewall_ids
-  description = "Firewall generated ids"
-}
+# output "firewall_ids" {
+#   value       = module.hub_vnet.firewall_ids
+#   description = "Firewall generated ids"
+# }
 
-output "firewall_names" {
-  value       = module.hub_vnet.firewall_names
-  description = "Firewall names"
-}
+# output "firewall_names" {
+#   value       = module.hub_vnet.firewall_names
+#   description = "Firewall names"
+# }
 
-output "firewall_private_ip_addresses" {
-  value       = module.hub_vnet.firewall_private_ip_addresses
-  description = "Firewall private IPs"
-}
+# output "firewall_private_ip_addresses" {
+#   value       = module.hub_vnet.firewall_private_ip_addresses
+#   description = "Firewall private IPs"
+# }
 
-output "firewall_public_ip_addresses" {
-  value       = module.hub_vnet.firewall_public_ip_addresses
-  description = "Firewall public IPs"
-}
+# output "firewall_public_ip_addresses" {
+#   value       = module.hub_vnet.firewall_public_ip_addresses
+#   description = "Firewall public IPs"
+# }
 
-output "firewall_subnet_ids" {
-  value       = module.hub_vnet.firewall_subnet_ids
-  description = "IDs of the subnet attached to the firewall"
-}
+# output "firewall_subnet_ids" {
+#   value       = module.hub_vnet.firewall_subnet_ids
+#   description = "IDs of the subnet attached to the firewall"
+# }
 
-output "firewall_policy_id" {
-  value       = module.hub_vnet.firewall_policy_id
-  description = "The ID of the Firewall Policy."
-}
+# output "firewall_policy_id" {
+#   value       = module.hub_vnet.firewall_policy_id
+#   description = "The ID of the Firewall Policy."
+# }
 
-output "firewall_policy_child_policies" {
-  value       = module.hub_vnet.firewall_policy_child_policies
-  description = "The child policies of the Firewall Policy."
-}
+# output "firewall_policy_child_policies" {
+#   value       = module.hub_vnet.firewall_policy_child_policies
+#   description = "The child policies of the Firewall Policy."
+# }
 
-output "firewall_policy_firewalls" {
-  value       = module.hub_vnet.firewall_policy_firewalls
-  description = "A list of references to Azure Firewalls that this Firewall Policy is associated with."
-}
+# output "firewall_policy_firewalls" {
+#   value       = module.hub_vnet.firewall_policy_firewalls
+#   description = "A list of references to Azure Firewalls that this Firewall Policy is associated with."
+# }
 
-output "firewall_policy_name" {
-  description = "The name of the Firewall Policy."
-  value       = module.hub_vnet.firewall_policy_name
-}
+# output "firewall_policy_name" {
+#   description = "The name of the Firewall Policy."
+#   value       = module.hub_vnet.firewall_policy_name
+# }
 
-output "firewall_policy_rule_collection_group_name" {
-  value       = module.hub_vnet.firewall_policy_rule_collection_group_name
-  description = "Value of the Azure Firewall policy rule collection group name"
-}
+# output "firewall_policy_rule_collection_group_name" {
+#   value       = module.hub_vnet.firewall_policy_rule_collection_group_name
+#   description = "Value of the Azure Firewall policy rule collection group name"
+# }
 
-output "firewall_policy_rule_collection_group_id" {
-  value       = module.hub_vnet.firewall_policy_rule_collection_group_id
-  description = "The ID of the Firewall Policy Rule Collection Group."
-}
+# output "firewall_policy_rule_collection_group_id" {
+#   value       = module.hub_vnet.firewall_policy_rule_collection_group_id
+#   description = "The ID of the Firewall Policy Rule Collection Group."
+# }

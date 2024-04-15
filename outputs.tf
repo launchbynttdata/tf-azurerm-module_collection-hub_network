@@ -50,62 +50,62 @@ output "vnet_subnet_name_id_map" {
   description = "Outputs a subnet name to ID map for each Vnet"
 }
 
-output "firewall_ids" {
-  value       = var.create_firewall ? module.firewall.firewall_ids : null
-  description = "Firewall generated ids"
-}
+# output "firewall_ids" {
+#   value       = var.create_firewall ? module.firewall.firewall_ids : null
+#   description = "Firewall generated ids"
+# }
 
-output "firewall_names" {
-  value       = var.create_firewall ? module.firewall.firewall_names : null
-  description = "Firewall names"
-}
+# output "firewall_names" {
+#   value       = var.create_firewall ? module.firewall.firewall_names : null
+#   description = "Firewall names"
+# }
 
-output "firewall_private_ip_addresses" {
-  value       = var.create_firewall ? module.firewall.private_ip_addresses : null
-  description = "Firewall private IPs"
-}
+# output "firewall_private_ip_addresses" {
+#   value       = var.create_firewall ? module.firewall.private_ip_addresses : null
+#   description = "Firewall private IPs"
+# }
 
-output "firewall_public_ip_addresses" {
-  value       = var.create_firewall ? module.firewall.public_ip_addresses : null
-  description = "Firewall public IPs"
-}
+# output "firewall_public_ip_addresses" {
+#   value       = var.create_firewall ? module.firewall.public_ip_addresses : null
+#   description = "Firewall public IPs"
+# }
 
-output "firewall_subnet_ids" {
-  value       = var.create_firewall ? module.firewall.subnet_ids : null
-  description = "IDs of the subnet attached to the firewall"
-}
+# output "firewall_subnet_ids" {
+#   value       = var.create_firewall ? module.firewall.subnet_ids : null
+#   description = "IDs of the subnet attached to the firewall"
+# }
 
-output "firewall_policy_id" {
-  description = "The ID of the Firewall Policy."
-  value       = var.create_firewall ? module.firewall_policy.id : null
-}
+# output "firewall_policy_id" {
+#   description = "The ID of the Firewall Policy."
+#   value       = var.create_firewall ? module.firewall_policy.id : null
+# }
 
-output "firewall_policy_child_policies" {
-  description = "The child policies of the Firewall Policy."
-  value       = var.create_firewall ? module.firewall_policy.child_policies : null
-}
+# output "firewall_policy_child_policies" {
+#   description = "The child policies of the Firewall Policy."
+#   value       = var.create_firewall ? module.firewall_policy.child_policies : null
+# }
 
-output "firewall_policy_firewalls" {
-  description = "A list of references to Azure Firewalls that this Firewall Policy is associated with."
-  value       = var.create_firewall ? module.firewall_policy.firewalls : null
-}
+# output "firewall_policy_firewalls" {
+#   description = "A list of references to Azure Firewalls that this Firewall Policy is associated with."
+#   value       = var.create_firewall ? module.firewall_policy.firewalls : null
+# }
 
-output "firewall_policy_rule_collection_groups" {
-  description = "A list of references to Azure Firewall Rule Collection Groups that this Firewall Policy is associated with."
-  value       = var.create_firewall ? module.firewall_policy.rule_collection_groups : null
-}
+# output "firewall_policy_rule_collection_groups" {
+#   description = "A list of references to Azure Firewall Rule Collection Groups that this Firewall Policy is associated with."
+#   value       = var.create_firewall ? module.firewall_policy.rule_collection_groups : null
+# }
 
-output "firewall_policy_name" {
-  description = "The name of the Firewall Policy."
-  value       = var.create_firewall ? module.firewall_policy.name : null
-}
+# output "firewall_policy_name" {
+#   description = "The name of the Firewall Policy."
+#   value       = var.create_firewall ? module.firewall_policy.name : null
+# }
 
-output "firewall_policy_rule_collection_group_name" {
-  value       = var.create_firewall ? module.firewall_policy_rule_collection_group.firewall_policy_rule_collection_group_name : null
-  description = "Value of the Azure Firewall policy rule collection group name"
-}
+# output "firewall_policy_rule_collection_group_name" {
+#   value       = var.create_firewall ? module.firewall_policy_rule_collection_group.firewall_policy_rule_collection_group_name : null
+#   description = "Value of the Azure Firewall policy rule collection group name"
+# }
 
-output "firewall_policy_rule_collection_group_id" {
-  value       = var.create_firewall ? module.firewall_policy_rule_collection_group.firewall_policy_rule_collection_group_id : null
-  description = "The ID of the Firewall Policy Rule Collection Group."
-}
+# output "firewall_policy_rule_collection_group_id" {
+#   value       = var.create_firewall ? module.firewall_policy_rule_collection_group.firewall_policy_rule_collection_group_id : null
+#   description = "The ID of the Firewall Policy Rule Collection Group."
+# }

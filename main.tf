@@ -42,36 +42,36 @@ module "network" {
   depends_on  = [module.resource_group]
 }
 
-module "firewall" {
-  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall.git?ref=1.0.0"
-  count  = var.create_firewall ? 1 : 0
+# module "firewall" {
+#   source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall.git?ref=1.0.0"
+#   count  = var.create_firewall ? 1 : 0
 
-  firewall_map = local.firewall_map
+#   firewall_map = local.firewall_map
 
-  depends_on = [module.network, module.resource_group]
-}
+#   depends_on = [module.network, module.resource_group]
+# }
 
-module "firewall_policy" {
-  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall_policy.git?ref=1.0.0"
-  count  = var.create_firewall ? 1 : 0
+# module "firewall_policy" {
+#   source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall_policy.git?ref=1.0.0"
+#   count  = var.create_firewall ? 1 : 0
 
-  name                = local.firewall_policy_name
-  resource_group_name = local.resource_group_name
-  location            = var.location
+#   name                = local.firewall_policy_name
+#   resource_group_name = local.resource_group_name
+#   location            = var.location
 
-  depends_on = [module.network]
-}
+#   depends_on = [module.network]
+# }
 
-module "firewall_policy_rule_collection_group" {
-  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall_policy_rule_collection_group.git?ref=1.0.0"
-  count  = var.create_firewall ? 1 : 0
+# module "firewall_policy_rule_collection_group" {
+#   source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-firewall_policy_rule_collection_group.git?ref=1.0.0"
+#   count  = var.create_firewall ? 1 : 0
 
-  name                        = local.firewall_policy_rule_collection_group_name
-  firewall_policy_id          = var.create_firewall ? module.firewall_policy.id : null
-  priority                    = var.firewall_policy_rule_collection_group_priority
-  application_rule_collection = var.application_rule_collection
-  network_rule_collection     = var.network_rule_collection
-  nat_rule_collection         = local.nat_rule_collection
+#   name                        = local.firewall_policy_rule_collection_group_name
+#   firewall_policy_id          = var.create_firewall ? module.firewall_policy.id : null
+#   priority                    = var.firewall_policy_rule_collection_group_priority
+#   application_rule_collection = var.application_rule_collection
+#   network_rule_collection     = var.network_rule_collection
+#   nat_rule_collection         = local.nat_rule_collection
 
-  depends_on = [module.firewall_policy, module.firewall]
-}
+#   depends_on = [module.firewall_policy, module.firewall]
+# }

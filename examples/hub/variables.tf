@@ -121,140 +121,140 @@ variable "location" {
   type        = string
 }
 
-variable "create_firewall" {
-  description = "Boolean to create a firewall"
-  type        = bool
-  default     = false
-}
+# variable "create_firewall" {
+#   description = "Boolean to create a firewall"
+#   type        = bool
+#   default     = false
+# }
 
-variable "firewall" {
-  description = "Attributes to create a azure firewall"
-  type = object({
-    logs_destinations_ids = list(string)
-    subnet_cidr           = optional(string)
-    additional_public_ips = optional(list(object(
-      {
-        name                 = string,
-        public_ip_address_id = string
-    })), [])
-    application_rule_collections = optional(list(object(
-      {
-        name     = string,
-        priority = number,
-        action   = string,
-        rules = list(object(
-          { name             = string,
-            source_addresses = list(string),
-            source_ip_groups = list(string),
-            target_fqdns     = list(string),
-            protocols = list(object(
-              { port = string,
-            type = string }))
-          }
-        ))
-    })))
-    custom_diagnostic_settings_name = optional(string)
-    custom_firewall_name            = optional(string)
-    dns_servers                     = optional(string)
-    extra_tags                      = optional(map(string))
-    firewall_private_ip_ranges      = optional(list(string))
-    ip_configuration_name           = optional(string)
-    network_rule_collections = optional(list(object({
-      name     = string,
-      priority = number,
-      action   = string,
-      rules = list(object({
-        name                  = string,
-        source_addresses      = list(string),
-        source_ip_groups      = optional(list(string)),
-        destination_ports     = list(string),
-        destination_addresses = list(string),
-        destination_ip_groups = optional(list(string)),
-        destination_fqdns     = optional(list(string)),
-        protocols             = list(string)
-      }))
-    })))
-    public_ip_zones = optional(list(number))
-    sku_tier        = string
-    zones           = optional(list(number))
-  })
-  default = null
-}
+# variable "firewall" {
+#   description = "Attributes to create a azure firewall"
+#   type = object({
+#     logs_destinations_ids = list(string)
+#     subnet_cidr           = optional(string)
+#     additional_public_ips = optional(list(object(
+#       {
+#         name                 = string,
+#         public_ip_address_id = string
+#     })), [])
+#     application_rule_collections = optional(list(object(
+#       {
+#         name     = string,
+#         priority = number,
+#         action   = string,
+#         rules = list(object(
+#           { name             = string,
+#             source_addresses = list(string),
+#             source_ip_groups = list(string),
+#             target_fqdns     = list(string),
+#             protocols = list(object(
+#               { port = string,
+#             type = string }))
+#           }
+#         ))
+#     })))
+#     custom_diagnostic_settings_name = optional(string)
+#     custom_firewall_name            = optional(string)
+#     dns_servers                     = optional(string)
+#     extra_tags                      = optional(map(string))
+#     firewall_private_ip_ranges      = optional(list(string))
+#     ip_configuration_name           = optional(string)
+#     network_rule_collections = optional(list(object({
+#       name     = string,
+#       priority = number,
+#       action   = string,
+#       rules = list(object({
+#         name                  = string,
+#         source_addresses      = list(string),
+#         source_ip_groups      = optional(list(string)),
+#         destination_ports     = list(string),
+#         destination_addresses = list(string),
+#         destination_ip_groups = optional(list(string)),
+#         destination_fqdns     = optional(list(string)),
+#         protocols             = list(string)
+#       }))
+#     })))
+#     public_ip_zones = optional(list(number))
+#     sku_tier        = string
+#     zones           = optional(list(number))
+#   })
+#   default = null
+# }
 
-// Firewall Policy Rule Collection Group
-variable "firewall_policy_rule_collection_group_priority" {
-  description = "(Required) The priority of the Firewall Policy Rule Collection Group. The range is 100-65000."
-  type        = number
-}
+# // Firewall Policy Rule Collection Group
+# variable "firewall_policy_rule_collection_group_priority" {
+#   description = "(Required) The priority of the Firewall Policy Rule Collection Group. The range is 100-65000."
+#   type        = number
+# }
 
-variable "application_rule_collection" {
-  description = "(Optional) The Application Rule Collection to use in this Firewall Policy Rule Collection Group."
-  type = list(object({
-    name     = string
-    action   = string
-    priority = number
-    rule = list(object({
-      name        = string
-      description = optional(string)
-      protocols = optional(list(object({
-        type = string
-        port = number
-      })))
-      http_headers = optional(list(object({
-        name  = string
-        value = string
-      })))
-      source_addresses      = optional(list(string))
-      source_ip_groups      = optional(list(string))
-      destination_addresses = optional(list(string))
-      destination_urls      = optional(list(string))
-      destination_fqdns     = optional(list(string))
-      destination_fqdn_tags = optional(list(string))
-      terminate_tls         = optional(bool)
-      web_categories        = optional(list(string))
-    }))
-  }))
-  default = []
-}
+# variable "application_rule_collection" {
+#   description = "(Optional) The Application Rule Collection to use in this Firewall Policy Rule Collection Group."
+#   type = list(object({
+#     name     = string
+#     action   = string
+#     priority = number
+#     rule = list(object({
+#       name        = string
+#       description = optional(string)
+#       protocols = optional(list(object({
+#         type = string
+#         port = number
+#       })))
+#       http_headers = optional(list(object({
+#         name  = string
+#         value = string
+#       })))
+#       source_addresses      = optional(list(string))
+#       source_ip_groups      = optional(list(string))
+#       destination_addresses = optional(list(string))
+#       destination_urls      = optional(list(string))
+#       destination_fqdns     = optional(list(string))
+#       destination_fqdn_tags = optional(list(string))
+#       terminate_tls         = optional(bool)
+#       web_categories        = optional(list(string))
+#     }))
+#   }))
+#   default = []
+# }
 
-variable "network_rule_collection" {
-  description = "(Optional) The Network Rule Collection to use in this Firewall Policy Rule Collection Group."
-  type = list(object({
-    name     = string
-    action   = string
-    priority = number
-    rule = list(object({
-      name                  = string
-      description           = optional(string)
-      protocols             = list(string)
-      destination_ports     = list(string)
-      source_addresses      = optional(list(string))
-      source_ip_groups      = optional(list(string))
-      destination_addresses = optional(list(string))
-      destination_fqdns     = optional(list(string))
-    }))
-  }))
-  default = []
+# variable "network_rule_collection" {
+#   description = "(Optional) The Network Rule Collection to use in this Firewall Policy Rule Collection Group."
+#   type = list(object({
+#     name     = string
+#     action   = string
+#     priority = number
+#     rule = list(object({
+#       name                  = string
+#       description           = optional(string)
+#       protocols             = list(string)
+#       destination_ports     = list(string)
+#       source_addresses      = optional(list(string))
+#       source_ip_groups      = optional(list(string))
+#       destination_addresses = optional(list(string))
+#       destination_fqdns     = optional(list(string))
+#     }))
+#   }))
+#   default = []
 
-}
+# }
 
-variable "nat_rule_collection" {
-  description = "(Optional) The NAT Rule Collection to use in this Firewall Policy Rule Collection Group."
-  type = list(object({
-    name     = string
-    action   = string
-    priority = number
-    rule = list(object({
-      name               = string
-      description        = optional(string)
-      protocols          = list(string)
-      source_addresses   = optional(list(string))
-      source_ip_groups   = optional(list(string))
-      destination_ports  = optional(list(string))
-      translated_address = optional(string)
-      translated_port    = number
-      translated_fqdn    = optional(string)
-    }))
-  }))
-  default = []
-}
+# variable "nat_rule_collection" {
+#   description = "(Optional) The NAT Rule Collection to use in this Firewall Policy Rule Collection Group."
+#   type = list(object({
+#     name     = string
+#     action   = string
+#     priority = number
+#     rule = list(object({
+#       name               = string
+#       description        = optional(string)
+#       protocols          = list(string)
+#       source_addresses   = optional(list(string))
+#       source_ip_groups   = optional(list(string))
+#       destination_ports  = optional(list(string))
+#       translated_address = optional(string)
+#       translated_port    = number
+#       translated_fqdn    = optional(string)
+#     }))
+#   }))
+#   default = []
+# }
