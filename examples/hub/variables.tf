@@ -93,29 +93,36 @@ variable "class_env" {
 variable "network" {
   description = "Attributes of virtual network to be created."
   type = object({
-    use_for_each    = bool
-    address_space   = optional(list(string), ["10.0.0.0/16"])
-    subnet_names    = optional(list(string), [])
-    subnet_prefixes = optional(list(string), [])
-    bgp_community   = optional(string, null)
+    resource_group_name = string
+    location            = string
+    vnet_name           = string
+    address_space       = optional(list(string), ["10.0.0.0/16"])
+    subnets = map(object({
+      prefix = string
+      delegation = optional(map(object({
+        service_name    = string
+        service_actions = list(string)
+      })), {})
+      service_endpoints                             = optional(list(string), []),
+      private_endpoint_network_policies_enabled     = optional(bool, false)
+      private_link_service_network_policies_enabled = optional(bool, false)
+      network_security_group_id                     = optional(string, null)
+      route_table_id                                = optional(string, null)
+    }))
+    bgp_community = optional(string, null)
     ddos_protection_plan = optional(object(
       {
         enable = bool
         id     = string
       }
     ), null)
-    dns_servers                                           = optional(list(string), [])
-    nsg_ids                                               = optional(map(string), {})
-    route_tables_ids                                      = optional(map(string), {})
-    subnet_delegation                                     = optional(map(map(any)), {})
-    subnet_enforce_private_link_endpoint_network_policies = optional(map(bool), {})
-    subnet_enforce_private_link_service_network_policies  = optional(map(bool), {})
-    subnet_service_endpoints                              = optional(map(list(string)), {})
-    tags                                                  = optional(map(string), {})
-    tracing_tags_enabled                                  = optional(bool, false)
-    tracing_tags_prefix                                   = optional(string, "")
+    dns_servers      = optional(list(string), [])
+    nsg_ids          = optional(map(string), {})
+    route_tables_ids = optional(map(string), {})
+    tags             = optional(map(string), {})
   })
 }
+
 variable "location" {
   description = "Azure region to use"
   type        = string
