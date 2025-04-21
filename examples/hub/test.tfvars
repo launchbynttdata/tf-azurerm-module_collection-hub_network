@@ -47,11 +47,21 @@ resource_names_map = {
   }
 }
 network = {
-  use_for_each    = false
-  address_space   = ["10.0.0.0/16"]
-  subnet_names    = []
-  subnet_prefixes = []
+  location            = "eastus"
+  resource_group_name = "rg"
+  vnet_name           = "vnet"
+  address_space       = ["10.0.0.0/16"]
+  subnets = {
+    subnet-1 = {
+      prefix = "10.0.1.0/24"
+    }
+  }
+  bgp_community        = null
+  ddos_protection_plan = null
+  dns_servers          = []
+  tags                 = {}
 }
+
 firewall = {
   logs_destinations_ids = []
   subnet_cidr           = "10.0.1.0/24"
